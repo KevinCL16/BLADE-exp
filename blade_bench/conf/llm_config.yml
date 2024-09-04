@@ -4,8 +4,18 @@ providers:
     name: OpenAI
     description: OpenAI's GPT-3 and GPT-4 models.
     models:
+      - name: gpt-4o
+        max_tokens: 4096
+        model:
+          model: gpt-4o
+          api_key_env_name: OPENAI_API_KEY
+      - name: gpt-4-turbo
+        max_tokens: 4096
+        model:
+          model: gpt-4-turbo
+          api_key_env_name: OPENAI_API_KEY
       - name: gpt-4 # general model name, can be anything
-        max_tokens: 8192 # max supported tokens
+        max_tokens: 4096 # max supported tokens
         model:
           model: gpt-4 # model actual name, required
           api_key_env_name: OPENAI_API_KEY

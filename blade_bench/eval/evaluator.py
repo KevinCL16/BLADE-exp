@@ -231,13 +231,13 @@ def run_eval_on_analyses(eval_config: EvalConfig):
             ]
         )
 
-    with open(osp.join(eval_config.output_dir, "eval_results.json"), "w") as f:
+    with open(osp.join(eval_config.output_dir, "eval_results.json"), "w", encoding='utf-8') as f:
         f.write(res.model_dump_json(indent=2))
 
-    with open(osp.join(eval_config.output_dir, "eval_metrics.json"), "w") as f:
+    with open(osp.join(eval_config.output_dir, "eval_metrics.json"), "w", encoding='utf-8') as f:
         f.write(metrics_across_runs.model_dump_json(indent=2))
 
-    with open(osp.join(eval_config.output_dir, "llm_history.json"), "w") as f:
+    with open(osp.join(eval_config.output_dir, "llm_history.json"), "w", encoding='utf-8') as f:
         f.write(
             json.dumps(
                 {

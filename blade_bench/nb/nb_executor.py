@@ -18,7 +18,7 @@ import scipy
 
 import pickle
     
-df = pd.read_csv('{data_path}')
+df = pd.read_csv(r'{data_path}')
 """
 
 POSTFIX_CODE = """

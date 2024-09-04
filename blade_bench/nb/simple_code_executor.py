@@ -18,7 +18,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import pickle
   
-df = pd.read_csv('{data_path}')
+df = pd.read_csv(r'{data_path}')
 """
 
 CODE_TEMPLATE = """

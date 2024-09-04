@@ -62,8 +62,8 @@ def timeout(seconds=10, default=None):
                 logger.debug(f"Timeout triggered for {func.__name__}")
                 raise TimeoutError()
 
-            signal.signal(signal.SIGALRM, handle_timeout)
-            signal.alarm(seconds)
+            # signal.signal(signal.SIGALRM, handle_timeout)
+            # signal.alarm(seconds)
 
             try:
                 result = func(*args, **kwargs)
@@ -71,8 +71,9 @@ def timeout(seconds=10, default=None):
                 logger.debug(f"Timeout occured: {str(e)}")
                 result = default
             finally:
-                # logger.debug(f"Clearing alarm for {func.__name__}")
-                signal.alarm(0)
+                logger.debug(f"Timeout for {func.__name__}, args={args}")
+                # signal.alarm(0)
+
 
             return result
 

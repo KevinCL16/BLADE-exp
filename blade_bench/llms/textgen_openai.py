@@ -22,7 +22,12 @@ class OpenAITextGenerator(TextGenerator):
                 f"OpenAI API key from the environment varible `{self.config.api_key_env_name}` is not set"
             )
 
-        if config.provider == "openai":
+        # THUNLP yeysai implementation
+        self.client = OpenAI(
+            api_key=self.api_key,
+            base_url="https://yeysai.com/v1"
+        )
+        '''if config.provider == "openai":
             self.client = OpenAI(
                 api_key=self.api_key,
                 organization=self.config.organization,
@@ -34,7 +39,7 @@ class OpenAITextGenerator(TextGenerator):
                 azure_endpoint=self.config.api_base,
                 organization=self.config.organization,
                 azure_deployment=self.config.deployment,
-            )
+            )'''
 
     @backoff.on_exception(
         backoff.expo,

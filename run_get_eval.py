@@ -15,6 +15,7 @@ from blade_bench.data.datamodel.transforms import (
     TransformDataReturn,
 )  # ❗️ this import needs to be kept here for the eval code to work
 from blade_bench.utils import get_absolute_dir
+os.environ['OPENAI_API_KEY'] = 'sk-V3CaY1MOnf1MNzumEb9bE5B288114964A94e2e3e7c9780Af'
 
 
 def load_list_int(value: str) -> List[int]:
@@ -36,6 +37,9 @@ def run_eval(
 ):
     diversity_ks = load_list_int(diversity_ks)
     llm_eval_config = yaml.safe_load(open(llm_eval_config_path))
+    llm_eval_config["provider"] = 'openai'
+    llm_eval_config["model"] = 'gpt-4o'
+
     if multirun_load_path:
         with open(multirun_load_path, "r") as f:
             multirun_results = MultiRunResults(**json.load(f))
@@ -120,7 +124,7 @@ def run_eval(
 @click.option(
     "--llm_eval_config_path",
     type=click.Path(exists=True, file_okay=True, dir_okay=False),
-    default="./conf/llm_eval.yaml",
+    default="./blade_bench/conf/llm_config.yml",
     help="Path to the LLM eval config file",
 )
 @click.option(

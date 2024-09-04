@@ -17,7 +17,7 @@ import statsmodels.api as sm
 import matplotlib.pyplot as plt
 import pickle
   
-df = pd.read_csv('{data_path}')
+df = pd.read_csv(r'{data_path}')
 
 class TransformDataReturn(BaseModel):
     model_config = ConfigDict(arbitrary_types_allowed=True)

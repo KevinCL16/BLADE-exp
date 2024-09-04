@@ -1,6 +1,8 @@
 import datetime
 import os
+os.environ['OPENAI_API_KEY'] = 'sk-V3CaY1MOnf1MNzumEb9bE5B288114964A94e2e3e7c9780Af'
 import os.path as osp
+import pdb
 import time
 
 import click
@@ -43,6 +45,10 @@ def run_gen_analysis(
         llm_config["model"] = llm_model
 
     llm_eval_config = yaml.safe_load(open(llm_eval_config_path))
+    if llm_provider:
+        llm_eval_config["provider"] = llm_provider
+    if llm_model:
+        llm_eval_config["model"] = llm_model
 
     if not output_dir:
         output_dir = f"./outputs/multirun/{llm_config['provider']}-{llm_config['model']}/{run_dataset}"
@@ -133,7 +139,7 @@ def run_gen_analysis(
 @click.option(
     "--llm_config_path",
     type=click.Path(exists=True, file_okay=True, dir_okay=False),
-    default="./conf/llm.yaml",
+    default="./blade_bench/conf/llm_config.yml",
     help="Path to the LLM config file, used to specify the provider, model, and text generation config such as the temperature.",
     show_default=True,
 )
@@ -152,7 +158,7 @@ def run_gen_analysis(
 @click.option(
     "--llm_eval_config_path",
     type=click.Path(exists=True, file_okay=True, dir_okay=False),
-    default="./conf/llm_eval.yaml",
+    default="./blade_bench/conf/llm_config.yml",
     help="Path to the LLM eval config file, used to specify the provider, model, and text generation config such as the temperature.",
     show_default=True,
 )
