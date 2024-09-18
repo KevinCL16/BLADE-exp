@@ -15,7 +15,7 @@ from blade_bench.data.datamodel.transforms import (
     TransformDataReturn,
 )  # ❗️ this import needs to be kept here for the eval code to work
 from blade_bench.utils import get_absolute_dir
-os.environ['OPENAI_API_KEY'] = 'sk-V3CaY1MOnf1MNzumEb9bE5B288114964A94e2e3e7c9780Af'
+os.environ['OPENAI_API_KEY'] = ''
 
 
 def load_list_int(value: str) -> List[int]:
