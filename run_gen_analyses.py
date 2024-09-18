@@ -1,6 +1,6 @@
 import datetime
 import os
-os.environ['OPENAI_API_KEY'] = 'sk-V3CaY1MOnf1MNzumEb9bE5B288114964A94e2e3e7c9780Af'
+os.environ['OPENAI_API_KEY'] = ''
 import os.path as osp
 import pdb
 import time
